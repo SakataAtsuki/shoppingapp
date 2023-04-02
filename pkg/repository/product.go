@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"github.com/jinzhu/gorm"
 	"shoppingapp/pkg/entity"
+
+	_ "github.com/go-sql-driver/mysql"
 )
 
 func open() *gorm.DB {

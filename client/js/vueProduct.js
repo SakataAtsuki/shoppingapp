@@ -5,9 +5,9 @@ Vue.createApp({
             // 商品情報
             products: [],
             // 品名
-            productName: '',
+            name: '',
             // メモ
-            productMemo: '',
+            memo: '',
             // 商品情報の状態
             current: -1,
             // 商品情報の状態一覧
@@ -37,9 +37,9 @@ Vue.createApp({
         },
         // 入力チェック
         validate() {
-            var isEnteredProductName = 0 < this.productName.length
-            this.isEntered = isEnteredProductName
-            return isEnteredProductName
+            var isEnteredName = 0 < this.name.length
+            this.isEntered = isEnteredName
+            return isEnteredName
         }
     },
     // インスタンス作成時の処理
@@ -66,7 +66,7 @@ Vue.createApp({
         doFetchProduct(product) {
             axios.get('/fetchProduct', {
                 params: {
-                    productID: product.id
+                    id: product.id
                 }
             })
                 .then(response => {
@@ -87,8 +87,8 @@ Vue.createApp({
         doAddProduct() {
             // サーバへ送信するパラメータ
             const params = new URLSearchParams();
-            params.append('productName', this.productName)
-            params.append('productMemo', this.productMemo)
+            params.append('name', this.name)
+            params.append('memo', this.memo)
 
             axios.post('/addProduct', params)
                 .then(response => {
@@ -104,11 +104,11 @@ Vue.createApp({
                 })
         },
         // 商品情報の状態を変更する
-        doChangeProductState(product) {
+        doChangeState(product) {
             // サーバへ送信するパラメータ
             const params = new URLSearchParams();
-            params.append('productID', product.id)
-            params.append('productState', product.state)
+            params.append('id', product.id)
+            params.append('state', product.state)
 
             axios.post('/changeStateProduct', params)
                 .then(response => {
@@ -124,7 +124,7 @@ Vue.createApp({
         doDeleteProduct(product) {
             // サーバへ送信するパラメータ
             const params = new URLSearchParams();
-            params.append('productID', product.id)
+            params.append('id', product.id)
 
             axios.post('/deleteProduct', params)
                 .then(response => {
@@ -139,8 +139,8 @@ Vue.createApp({
         // 入力値を初期化する
         initInputValue() {
             this.current = -1
-            this.productName = ''
-            this.productMemo = ''
+            this.name = ''
+            this.memo = ''
         }
     }
 }).mount('#app')

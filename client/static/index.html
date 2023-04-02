@@ -22,8 +22,8 @@
     <label v-for="label in options">
         <input type="radio" v-model="current" v-bind:value="label.value">{{ label.label }}
     </label>
-    <p>品名：<input type="text" name='productName' v-model="productName" v-bind:class="{'alert-color': !validate }" value='' size="40" placeholder="品名を入力してください※必須"></p>
-    <p>メモ：<input type="text" name='productMemo' v-model="productMemo" value='' size="40"></p>
+    <p>品名：<input type="text" name='name' v-model="name" v-bind:class="{'alert-color': !validate }" value='' size="40" placeholder="品名を入力してください※必須"></p>
+    <p>メモ：<input type="text" name='memo' v-model="memo" value='' size="40"></p>
 
     <!-- 追加ボタン -->
     <button v-on:click="doAddProduct" v-bind:disabled="!isEntered">
@@ -48,7 +48,7 @@
             <td class="memo">{{ item.memo }}</td>
             <td class="state">
                 <!-- 状態変更ボタン -->
-                <button v-on:click="doChangeProductState(item)">
+                <button v-on:click="doChangeState(item)">
                     {{ labels[item.state] }}
                 </button>
             </td>

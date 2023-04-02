@@ -3,7 +3,7 @@ package repository
 import (
 	"fmt"
 	"github.com/jinzhu/gorm"
-	"shoppingapp/models/entity"
+	"shoppingapp/pkg/entity"
 )
 
 func open() *gorm.DB {

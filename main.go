@@ -22,7 +22,7 @@ func serve() {
 
 	r.GET("/fetchProduct", usecase.GetProduct)
 
-	r.POST("/addProdut", usecase.CreateProduct)
+	r.POST("/addProduct", usecase.CreateProduct)
 
 	r.POST("/changeStateProduct", usecase.UpdateProductState)
 

@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/gin-gonic/gin"
+	_ "github.com/jinzhu/gorm/dialects/mysql"
 	"log"
 	"net/http"
 	"shoppingapp/pkg/usecase"
